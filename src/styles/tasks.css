@@ -1,0 +1,26 @@
+.tareas {
+    width: 350px;
+    height: 420px;
+    margin-top: 100px;
+    margin-left: 20px;
+    padding: 20px;
+    background-color: #555555;
+    color: #000000;
+}
+
+.title-tarea {
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+    justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.button {
+    width:25px;
+    height: 25px;
+    margin: 20px;
+    border-radius: 30px;
+    border: none;
+    color: 	#25D366 ;
+}

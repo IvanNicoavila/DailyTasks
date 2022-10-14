@@ -1,0 +1,30 @@
+.resumen {
+    width: 350px;
+    height: 200px;
+    margin-top: 100px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    background-color: #555555;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.lista {
+    padding-bottom: 20px;
+    list-style: none;
+}
+
+.lista-1 {
+    color:#25D366;
+}
+
+.lista-2 {
+    color:#FFA500;
+}
+
+.lista-3 {
+    color:#FF0000;
+}
