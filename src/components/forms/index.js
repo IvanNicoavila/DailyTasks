@@ -1,10 +1,8 @@
-import React,{ useState } from 'react'
+import React from 'react'
 import { useForm } from "react-hook-form";
-import ItemTask from '../tasks/ItemTask'
 import Form from 'react-bootstrap/Form'
 
-const Formulario = () => {
-  const [tareas, setTareas] = useState([])
+const Formulario = ({tareas,setTareas}) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   
   const onSubmit = (data, e) => {
@@ -14,7 +12,7 @@ const Formulario = () => {
       data
     ])
     e.target.reset()
-  };
+  }; 
 
 
   return (
@@ -35,13 +33,6 @@ const Formulario = () => {
         {errors.descripcion?.type === 'maxLength' && <span>Limite de caracteres</span>}
         <input type="submit"/>
       </form>
-      <ul>
-        {
-          tareas.map((tarea, index) => 
-            <ItemTask key={index} {...tarea}/>
-          )
-        }
-      </ul>
     </>
   )
 }
