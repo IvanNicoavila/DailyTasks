@@ -1,26 +1,33 @@
-import React from 'react'
-/* import styled from "styled-components"; */
-import '../../styles/tasks.css'
+import React, {useState} from 'react'
 import Formulario from '../forms/index'
+import '../../styles/tasks.css'
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-const Tareas = () => {
 
-  /* const Title = styled.h1`
-    font-size: 1.5em;
-    text-align: center;
-    color: palevioletred;
-  `; */
-   
+const Tarea = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
+
   return (
     <>
       <div className='tareas'>
         <div className='title-tarea'>
           <h1>Tareas</h1>
-          <Formulario/>
+          <Button onClick={handleShow} variant='primary'>
+            +
+          </Button>
+          <Modal show={show} onHide={handleClose}>
+            <Formulario/>
+          </Modal>
         </div>
       </div>
     </>
   )
 }
 
-export default Tareas
+export default Tarea

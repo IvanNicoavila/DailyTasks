@@ -1,52 +1,47 @@
-import React, {useState} from 'react'
-import Modal from 'react-bootstrap/Modal';
-/* import styled from "styled-components"; */
+import React,{ useState } from 'react'
 import { useForm } from "react-hook-form";
-
+import ItemTask from '../tasks/ItemTask'
+import Form from 'react-bootstrap/Form'
 
 const Formulario = () => {
-    const [show, setShow] = useState(false);
-    const { register, handleSubmit } = useForm();
+  const [tareas, setTareas] = useState([])
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  
+  const onSubmit = (data, e) => {
+    console.log(data)
+    setTareas([
+      ...tareas,
+      data
+    ])
+    e.target.reset()
+  };
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    
-    const handleInputChange = ({value}) => {
-        console.log(value)
-    }
-
-    const onSubmit = data => console.log(data) 
-
-   /*  const CustomButton = styled.button`
-        border-radius: 100%;
-        height: 30px;
-        width:30px;
-        border: none;
-        background-color:white;
-        color: green;
-    ` */
 
   return (
     <>
-        <button variant="primary" onClick={handleShow}>
-            +
-        </button>
-        <Modal show={show} size='sm' onHide={handleClose}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <select {...register("estado")}>
-                    <option value="pendiente">Pendiente</option>
-                    <option value="finalizada">Finalizada</option>
-                </select>
-                <select {...register("prioridad")}>
-                    <option value="alta">Alta</option>
-                    <option value="media">Media</option>
-                    <option value="baja">Baja</option>
-                </select>
-                <textarea {...register("descripción")}/>
-                <button onClick={handleClose}>Cancelar</button>
-                <button type='submit'>Crear</button>
-            </form>
-        </Modal>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Form.Select {...register("estado", {required:true})}>
+          <option value="1">Pendiente</option>
+          <option value="2">Finalizada</option>
+        </Form.Select>
+        <Form.Select {...register("prioridad", {required: true})}>
+          <option value="1">Alta</option>
+          <option value="2">Media</option>
+          <option value="3">Baja</option>
+        </Form.Select>
+        <textarea {...register("descripcion", {required:true, maxLength:300})}>
+        </textarea>
+        {errors.descripcion?.type === 'required' && <span>Completar campo</span>}
+        {errors.descripcion?.type === 'maxLength' && <span>Limite de caracteres</span>}
+        <input type="submit"/>
+      </form>
+      <ul>
+        {
+          tareas.map((tarea, index) => 
+            <ItemTask key={index} {...tarea}/>
+          )
+        }
+      </ul>
     </>
   )
 }

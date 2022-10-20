@@ -1,0 +1,17 @@
+.container-form {
+    /* width: 300px;
+    height: 300px; */
+    display: column;
+    padding: 30px;
+    margin:20px;
+}
+
+.inputs-form {
+    padding:10px;
+}
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

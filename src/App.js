@@ -1,6 +1,6 @@
 import Resumen from './components/resume'
 import Notas from './components/notes'
-import Tareas from './components/tasks'
+import Tarea from './components/tasks'
 import './App.css';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
           <Notas/>
         </div>
         <div>
-          <Tareas/>
+          <Tarea/>
         </div>
       </div>
     </>
